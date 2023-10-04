@@ -1,4 +1,5 @@
 import './App.css';
+import KakaoLoginButton  from './component/login/KakaoLoginButton';
 
 function App() {
   return (
