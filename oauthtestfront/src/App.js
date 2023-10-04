@@ -1,10 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
   return (
     <div>
       <header>
+        <img src={process.env.PUBLIC_URL + '/logo.png'} alt="logo" />
         <h1>WAP Toonder</h1>
       </header>
       <main>
