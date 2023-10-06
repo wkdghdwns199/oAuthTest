@@ -1,13 +1,12 @@
 import React from "react";
 import { Routes, Route, Link } from "react-router-dom";
-
 import {Head} from "../../styles/background/Head";
 
 
 function Header(props) {
   return (
     <Head>
-      <div>นÝป็</div>
+      <div>???????/</div>
       <img
         src={process.env.PUBLIC_URL + "/logo.png"}
         alt="logo"
