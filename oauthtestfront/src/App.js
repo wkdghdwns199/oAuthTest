@@ -1,15 +1,16 @@
-import './App.css';
+import React from "react";
+import "./App.css";
+import LoginPage from "./LoginPage";
+import JoinPage from "./JoinPage";
+import { Routes, Route, Link } from "react-router-dom";
 
 function App() {
   return (
-    <div>
-      <header>
-        <img src={process.env.PUBLIC_URL + '/logo.png'} alt="logo" />
-        <h1>WAP Toonder</h1>
-      </header>
-      <main>
-        <p>Let's go</p>
-      </main>
+    <div className="App">
+      <Routes>
+        <Route path="/login" element={<LoginPage />}></Route>
+        <Route path="/join" element={<JoinPage />}></Route>
+      </Routes>
     </div>
   );
 }
