@@ -6,7 +6,6 @@ import JoinPage from "../join/JoinPage";
 import KakaoLoginButton from "./KakaoLoginButton";
 
 // styled-componets
-
 // 아이디 input - 필드
 const Input = styled.input`
   border: none;
@@ -53,55 +52,30 @@ const Button = styled.button`
   margin: 5px;
 `;
 
-const LoginContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 350px;
-`;
-
-// // 카카오 로그인 버튼
-// const KakaoLoginButton = styled.img`
-//   cursor: pointer;
-//   margin: 30px;
-// `;
-
 function LoginForm() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-
   <Routes>
     <Route path="/join" element={<JoinPage />} />
   </Routes>;
 
-  const handleUsernameChange = (e) => {
-    setUsername(e.target.value);
-  };
-
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
-
   return (
     <>
-        <Header title="로그인" />
-        <div>
-          <Input type="id" placeholder="이메일" />
-        </div>
-        <div>
-          <PasswordInput type="password" placeholder="비밀번호" />
-        </div>
-        <LoginBtn>로그인</LoginBtn>
-        <div>
-          <Link to="/join">
-            <Button>회원가입</Button>
-          </Link>
-        </div>
-        <div>
-          <Button>비밀번호 초기화</Button>
-        </div>
-        <KakaoLoginButton />
+      <Header title="로그인" />
+      <div>
+        <Input type="id" placeholder="이메일" />
+      </div>
+      <div>
+        <PasswordInput type="password" placeholder="비밀번호" />
+      </div>
+      <LoginBtn>로그인</LoginBtn>
+      <div>
+        <Link to="/join">
+          <Button>회원가입</Button>
+        </Link>
+      </div>
+      <div>
+        <Button>비밀번호 초기화</Button>
+      </div>
+      <KakaoLoginButton />
     </>
   );
 }

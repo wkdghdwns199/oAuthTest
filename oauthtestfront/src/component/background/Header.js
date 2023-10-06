@@ -9,10 +9,7 @@ const Head = styled.header`
 function Header(props) {
   return (
     <Head>
-      <div>
-        <Link to="/login">로그인화면</Link>
-        <Link to="/join">회원가입화면</Link>
-      </div>
+      <div></div>
       <img
         src={process.env.PUBLIC_URL + "/logo.png"}
         alt="logo"
