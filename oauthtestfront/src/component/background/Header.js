@@ -1,6 +1,5 @@
 import React from "react";
 import { Routes, Route, Link } from "react-router-dom";
-
 import {Head} from "../../styles/background/Head";
 
 
