@@ -11,7 +11,6 @@ function App() {
         <Route path="/login" element={<LoginPage />}></Route>
         <Route path="/join" element={<JoinPage />}></Route>
       </Routes>
-      <div>git pull이 안됨</div>
     </div>
   );
 }
