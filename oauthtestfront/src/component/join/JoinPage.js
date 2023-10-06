@@ -141,7 +141,6 @@ function JoinPage() {
         value={password}
         onChange={handlePasswordChange}
       />
-      <div style={errorMsgStyle}>{emailErrorMsg}</div>
 
       {/* 입력중인 비밀번호 숨기기&보이기 기능
       <button onClick={togglePasswordVisibility}>
