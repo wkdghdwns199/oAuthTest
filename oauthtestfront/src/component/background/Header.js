@@ -1,10 +1,8 @@
 import React from "react";
-import styled from "styled-components";
 import { Routes, Route, Link } from "react-router-dom";
 
-const Head = styled.header`
-  margin: 20px;
-`;
+import {Head} from "../../styles/background/Head";
+
 
 function Header(props) {
   return (
