@@ -49,18 +49,19 @@ const Button = styled.button`
   margin: 5px;
 `;
 
-
 function JoinPage() {
   const [email, setEmail] = useState("");
   const [emailErrorMsg, setEmailErrorMsg] = useState("");
   const [password, setPassword] = useState("");
   const [passwordErrorMsg, setPasswordErrorMsg] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
+  const [passwordConfirmErrorMsg, setPasswordConfirmErrorMsg] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
   // 이메일, 비밀번호 입력시 에러메시지 style
   const errorMsgStyle = {
-    fontSize: '12px',
-    color: 'red',    
+    fontSize: "12px",
+    color: "red",
   };
 
   // 이메일 입력시 에러메시지 출력 함수
@@ -91,9 +92,23 @@ function JoinPage() {
     if (newPassword.length === 0) {
       setPasswordErrorMsg("");
     } else if (!/^(?=.*[a-zA-Z])(?=.*\d).{8,}$/.test(newPassword)) {
-        setPasswordErrorMsg("영문, 숫자 포함해 8자 이상 입력해주세요");
+      setPasswordErrorMsg("영문, 숫자 포함해 8자 이상 입력해주세요");
     } else {
-        setPasswordErrorMsg("");
+      setPasswordErrorMsg("");
+    }
+  };
+
+  const handlePasswordConfirmChange = (e) => {
+    const newPasswordConfirm = e.target.value;
+    setPasswordConfirm(newPasswordConfirm);
+  
+    if (newPasswordConfirm.length === 0) {
+      setPasswordConfirmErrorMsg("");
+    }
+    else if (newPasswordConfirm !== password) {
+      setPasswordConfirmErrorMsg("비밀번호가 일치하지 않습니다");
+    } else {
+      setPasswordConfirmErrorMsg("");
     }
   };
 
@@ -126,7 +141,8 @@ function JoinPage() {
         value={password}
         onChange={handlePasswordChange}
       />
-      
+      <div style={errorMsgStyle}>{emailErrorMsg}</div>
+
       {/* 입력중인 비밀번호 숨기기&보이기 기능
       <button onClick={togglePasswordVisibility}>
         {showPassword ? "숨기기" : "보이기"}
@@ -134,7 +150,13 @@ function JoinPage() {
       */}
       <div style={errorMsgStyle}>{passwordErrorMsg}</div>
       <div>
-        <Input type="password" placeholder="비밀번호 확인" />
+        <Input
+          type={showPassword ? "text" : "password"}
+          placeholder="비밀번호 확인"
+          value={passwordConfirm}
+          onChange={handlePasswordConfirmChange}
+        />
+        <div style={errorMsgStyle}>{passwordConfirmErrorMsg}</div>
       </div>
       <LoginBtn>다음</LoginBtn>
     </>
