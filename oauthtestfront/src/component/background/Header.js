@@ -7,7 +7,7 @@ import {Head} from "../../styles/background/Head";
 function Header(props) {
   return (
     <Head>
-      <div></div>
+      <div>นÝป็</div>
       <img
         src={process.env.PUBLIC_URL + "/logo.png"}
         alt="logo"
