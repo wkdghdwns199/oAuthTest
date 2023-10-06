@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Header from "./Header";
 import { Link, Route, Routes } from "react-router-dom";
 import JoinPage from "./JoinPage";
+import KakaoLoginButton  from './component/login/KakaoLoginButton';
 
 // styled-componets
 
@@ -52,11 +53,11 @@ const Button = styled.button`
   margin: 5px;
 `;
 
-// 카카오 로그인 버튼
-const KakaoLoginBtn = styled.img`
-  cursor: pointer;
-  margin: 30px;
-`;
+// // 카카오 로그인 버튼
+// const KakaoLoginButton = styled.img`
+//   cursor: pointer;
+//   margin: 30px;
+// `;
 
 function LoginForm() {
   const [username, setUsername] = useState("");
@@ -92,12 +93,7 @@ function LoginForm() {
         <div>
           <Button>비밀번호 초기화</Button>
         </div>
-        <KakaoLoginBtn
-          src={process.env.PUBLIC_URL + "/kakaoLoginImg.png"}
-          alt="kakaoLoginImg"
-          width="50px"
-          height="auto"
-        />
+        <KakaoLoginButton/>
     </>
   );
 }

@@ -3,8 +3,10 @@ import "./App.css";
 import LoginPage from "./LoginPage";
 import JoinPage from "./JoinPage";
 import { Routes, Route, Link } from "react-router-dom";
+import './App.css';
 
 function App() {
+  
   return (
     <div className="App">
       <Routes>
