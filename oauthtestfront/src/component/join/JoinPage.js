@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import Header from "./Header";
+import Header from "../background/Header";
 
 // styled-componets
 // 아이디 input - 필드
@@ -105,7 +105,6 @@ function JoinPage() {
   return (
     <>
       <Header title="회원가입" />
-      <div>1/2</div> {/* 회원가입 진행단계 표시*/}
       <div>
         <Input type="text" placeholder="성" />
       </div>

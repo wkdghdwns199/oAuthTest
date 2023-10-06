@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import Header from "./Header";
+import Header from "../background/Header";
 import { Link, Route, Routes } from "react-router-dom";
-import JoinPage from "./JoinPage";
-import KakaoLoginButton  from './component/login/KakaoLoginButton';
+import JoinPage from "../join/JoinPage";
+import KakaoLoginButton from "./KakaoLoginButton";
 
 // styled-componets
 
@@ -53,6 +53,14 @@ const Button = styled.button`
   margin: 5px;
 `;
 
+const LoginContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 350px;
+`;
+
 // // 카카오 로그인 버튼
 // const KakaoLoginButton = styled.img`
 //   cursor: pointer;
@@ -93,7 +101,7 @@ function LoginForm() {
         <div>
           <Button>비밀번호 초기화</Button>
         </div>
-        <KakaoLoginButton/>
+        <KakaoLoginButton />
     </>
   );
 }

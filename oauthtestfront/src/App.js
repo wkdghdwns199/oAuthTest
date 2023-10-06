@@ -1,12 +1,11 @@
 import React from "react";
 import "./App.css";
-import LoginPage from "./LoginPage";
-import JoinPage from "./JoinPage";
+import LoginPage from "./component/login/LoginPage";
+import JoinPage from "./component/join/JoinPage";
 import { Routes, Route, Link } from "react-router-dom";
-import './App.css';
+import Header from "./component/background/Header";
 
 function App() {
-  
   return (
     <div className="App">
       <Routes>
