@@ -3,6 +3,7 @@ import "./App.css";
 import LoginPage from "./component/login/LoginPage";
 import JoinPage from "./component/join/JoinPage";
 import { Routes, Route, Link } from "react-router-dom";
+import LoginHandler from "./component/login/LoginHandler";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/login" element={<LoginPage />}></Route>
         <Route path="/join" element={<JoinPage />}></Route>
+        <Route path="/user/kakao/callback" element={<LoginHandler />}></Route>
       </Routes>
     </div>
   );
