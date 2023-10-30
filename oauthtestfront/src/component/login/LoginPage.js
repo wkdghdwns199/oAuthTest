@@ -16,8 +16,8 @@ export const Container = styled.div`
   text-align: center; /* 텍스트를 중앙으로 정렬합니다. */
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
   transition: box-shadow 0.3s ease; /* 효과를 부드럽게 적용하기 위한 트랜지션 추가 */
-  height: 100vh; /* 뷰포트 높이에 딱 맞게 높이 설정 */
   overflow-y: auto; /* 스크롤이 필요한 경우 스크롤 표시 */
+  min-height: 100vh; /* 컨테이너의 최소 높이를 뷰포트 높이로 설정 */
 `;
 
 // 아이디 input - 필드
