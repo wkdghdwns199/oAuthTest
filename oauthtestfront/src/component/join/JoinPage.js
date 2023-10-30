@@ -3,87 +3,10 @@ import styled from "styled-components";
 import Header from "../background/Header";
 import { Link } from "react-router-dom";
 import { Btn, Container, Input, PasswordInput } from "../login/LoginPage";
+import { hashtagOptions } from "./hashtagOptions";
+import styles from "./JoinPage.module.css";
 
 // styled-componets
-const CheckboxContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  height: 160px;
-  overflow-y: auto;
-  border: 1px solid #ccc;
-  padding: 10px;
-  width: 350px;
-  display: flex;
-  justify-content: center;
-  align-items: start;
-  top: 455px;
-  border-radius: 10px;
-  background-color: #bfbfbf;
-  color: black;
-
-  /* 스크롤 스타일 적용 */
-  /* 스크롤바 가로 사이즈 */
-  ::-webkit-scrollbar {
-    width: 20px;
-  }
-
-  /* 스크롤바 막대기 */
-  ::-webkit-scrollbar-thumb {
-    border-radius: 20px;
-    background-color: #555;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background-color: #f54;
-  }
-
-  ::-webkit-scrollbar-thumb:active {
-    background-color: #f00;
-  }
-
-  /* 스크롤바 백그라운드 */
-  ::-webkit-scrollbar-track {
-    background-color: #fff;
-  }
-
-  ::-webkit-scrollbar-track:hover {
-    background-color: #eee;
-  }
-`;
-
-const CheckboxLabel = styled.label`
-  display: flex;
-  align-items: center;
-  width: 50%;
-  margin-bottom: 10px;
-`;
-
-const CheckboxInput = styled.input`
-  margin-right: 10px;
-  margin-left: 35px;
-  border: none; /* 테두리 제거 */
-  appearance: none; /* 기본 체크 박스 스타일 제거 */
-  width: 16px; /* 체크 박스 크기 설정 */
-  height: 16px; /* 체크 박스 크기 설정 */
-  background-color: white; /* 배경색 설정 */
-  border: 1px solid #ccc; /* 체크 박스 외곽선 스타일 설정 */
-  border-radius: 3px; /* 체크 박스 외곽선 둥글게 만들기 */
-  transition: all 0.3s ease; /* 체크 박스 변경 효과 부드럽게 적용 */
-
-  &:checked {
-    background-color: white; /* 체크된 상태에서 배경색을 검은색으로 변경 */
-    border-color: white; /* 체크된 상태에서 외곽선 색상 변경 */
-  }
-
-  &:checked::before {
-    content: "✔"; /* 체크 모양 추가 */
-    display: block;
-    text-align: center;
-    font-size: 16px;
-    line-height: 16px;
-    color: black; /* 체크 모양 색상 설정 */
-  }
-`;
 
 // 로그인 버튼
 const LoginBtn = styled.button`
@@ -157,40 +80,6 @@ function JoinPage() {
     }
   };
 
-  const hashtagOptions = [
-    "공포",
-    "드라마",
-    "코믹",
-    "일상",
-    "판타지",
-    "액션",
-    "역사",
-    "학원",
-    "SF",
-    "학습만화",
-    "캠페인",
-    "스포츠",
-    "동성애",
-    "추리",
-    "모험",
-    "무협",
-    "시사",
-    "교양",
-    "요리",
-    "성인",
-    "순정",
-    "BL",
-    "소년",
-    "미스터리",
-    "GL",
-    "로맨스판타지",
-    "카툰",
-    "기관발행물",
-    "만화이론",
-    "로맨스",
-    "그래픽노블",
-    "개그",
-  ];
 
   const handleFirstName = (e) => {
     setFirstName(e.target.value);
@@ -302,18 +191,21 @@ function JoinPage() {
         <div style={{ marginTop: "30px", marginBottom: "20px" }}>
           좋아하는 만화 장르를 1개 이상 선택하세요
         </div>
-        <CheckboxContainer>
+        
+        {/* 체크박스 컨테이너 */}
+        <div className={styles.CheckboxContainer}>
           {hashtagOptions.map((hashtag) => (
-            <CheckboxLabel key={hashtag}>
-              <CheckboxInput
+            <label className={styles.CheckboxLabel}>
+              <input
                 type="checkbox"
+                className={styles.CheckboxInput}
                 value={hashtag}
                 onChange={handleCheckboxChange}
               />
               {hashtag}
-            </CheckboxLabel>
+            </label>
           ))}
-        </CheckboxContainer>
+        </div>
         <div>
           <Btn>다음</Btn>
         </div>
