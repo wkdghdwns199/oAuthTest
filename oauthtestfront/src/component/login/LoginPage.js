@@ -57,6 +57,11 @@ export const Btn = styled.button`
   margin: 20px;
   display: block;
   position: relative; /* position 속성 추가 */
+  transition: box-shadow 0.3s ease; /* 효과를 부드럽게 적용하기 위한 트랜지션 추가 */
+
+  &:hover {
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3); /* 마우스 오버시 그림자 효과 추가 */
+  }
 `;
 
 // 회원가입, 비밀번호 초기화 - 버튼
