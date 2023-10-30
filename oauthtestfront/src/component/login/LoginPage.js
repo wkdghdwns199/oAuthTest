@@ -53,8 +53,10 @@ export const Btn = styled.button`
   font-size: 16px;
   cursor: pointer;
   border-radius: 10px;
-  padding: 10px 50px;
+  padding: 14px 100px;
   margin: 20px;
+  display: block;
+  position: relative; /* position 속성 추가 */
 `;
 
 // 회원가입, 비밀번호 초기화 - 버튼
