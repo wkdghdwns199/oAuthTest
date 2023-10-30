@@ -1,23 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import Header from "../background/Header";
+import { Container, Input } from "../login/LoginPage";
 
 // styled-componets
-// 아이디 input - 필드
-const Input = styled.input`
-  border: none;
-  border-radius: 0px;
-  border-bottom: 2px solid black;
-  margin: 5px;
-  padding: 10px;
-  width: 300px;
-  font-size: 16px;
-  outline: none;
-
-  &::placeholder {
-    font-family: "NIXGONM-Vb"; /* placeholder에 폰트 스타일 적용 */
-  }
-`;
 
 // 비밀번호 input - 필드 (아이디 input 필드 상속)
 const PasswordInput = styled(Input)`
@@ -119,6 +105,7 @@ function JoinPage() {
 
   return (
     <>
+    <Container>
       <Header title="회원가입" />
       <div>
         <Input type="text" placeholder="성" />
@@ -135,7 +122,7 @@ function JoinPage() {
         />
         <div style={errorMsgStyle}>{emailErrorMsg}</div>
       </div>
-      <Input
+      <PasswordInput
         type={showPassword ? "text" : "password"}
         placeholder="비밀번호"
         value={password}
@@ -149,7 +136,7 @@ function JoinPage() {
       */}
       <div style={errorMsgStyle}>{passwordErrorMsg}</div>
       <div>
-        <Input
+        <PasswordInput
           type={showPassword ? "text" : "password"}
           placeholder="비밀번호 확인"
           value={passwordConfirm}
@@ -158,6 +145,7 @@ function JoinPage() {
         <div style={errorMsgStyle}>{passwordConfirmErrorMsg}</div>
       </div>
       <LoginBtn>다음</LoginBtn>
+      </Container>
     </>
   );
 }
