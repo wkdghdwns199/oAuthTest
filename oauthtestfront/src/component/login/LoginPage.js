@@ -45,7 +45,7 @@ export const PasswordInput = styled(Input)`
 `;
 
 // 로그인 버튼
-const LoginBtn = styled.button`
+export const Btn = styled.button`
   font-family: "NIXGONM-Vb";
   background-color: black;
   border: none;
@@ -58,7 +58,7 @@ const LoginBtn = styled.button`
 `;
 
 // 회원가입, 비밀번호 초기화 - 버튼
-const Button = styled.button`
+export const BtnText = styled.button`
   cursor: pointer;
   font-family: "NIXGONM-Vb";
   font-size: 16px;
@@ -106,14 +106,14 @@ function LoginForm() {
         <div>
           <PasswordInput type="password" placeholder="비밀번호" />
         </div>
-        <LoginBtn>로그인</LoginBtn>
+        <Btn>로그인</Btn>
         <div>
           <Link to="/join">
-            <Button>회원가입</Button>
+            <BtnText>회원가입</BtnText>
           </Link>
         </div>
         <div>
-          <Button>비밀번호 초기화</Button>
+          <BtnText>비밀번호 초기화</BtnText>
         </div>
         <Line>SNS로 로그인하기</Line>
         <KakaoLoginButton />
