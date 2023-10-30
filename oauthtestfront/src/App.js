@@ -9,7 +9,7 @@ function App() {
         <h1>WAP Toonder</h1>
       </header>
       <main>
-        <p>supabase</p>
+        <p>supabase test</p>
       </main>
     </div>
   );
