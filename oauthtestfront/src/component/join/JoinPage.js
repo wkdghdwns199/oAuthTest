@@ -207,7 +207,7 @@ function JoinPage() {
           ))}
         </div>
         <div>
-          <Btn>다음</Btn>
+          <Btn style={{ marginBottom: '50px' }}>다음</Btn>
         </div>
       </Container>
     </>
