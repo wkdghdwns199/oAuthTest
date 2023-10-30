@@ -22,7 +22,7 @@ export const Container = styled.div`
 
 // 아이디 input - 필드
 export const Input = styled.input`
-  font-family: 'NIXGONM-Vb';
+  font-family: "NIXGONM-Vb";
   border: none;
   border-radius: 0px;
   border-bottom: 1px solid grey;
@@ -39,7 +39,7 @@ export const Input = styled.input`
 
 // 비밀번호 input - 필드 (아이디 input 필드 상속)
 export const PasswordInput = styled(Input)`
-  font-family: 'NIXGONM-Vb';
+  font-family: "NIXGONM-Vb";
   font: small-caption;
   font-size: 16px;
 `;
@@ -90,7 +90,6 @@ const Line = styled.div`
   }
 `;
 
-
 function LoginForm() {
   <Routes>
     <Route path="/join" element={<JoinPage />} />
@@ -113,7 +112,9 @@ function LoginForm() {
           </Link>
         </div>
         <div>
-          <BtnText>비밀번호 초기화</BtnText>
+          <Link to="/findpw">
+            <BtnText>비밀번호 초기화</BtnText>
+          </Link>
         </div>
         <Line>SNS로 로그인하기</Line>
         <KakaoLoginButton />

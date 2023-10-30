@@ -15,7 +15,7 @@ function FindPw() {
           <Input type="id" placeholder="비밀번호" />
         </div>
         <div>
-            <Btn>찾기</Btn>
+            <Btn>코드 발송</Btn>
         </div>
       </Container>
     </>

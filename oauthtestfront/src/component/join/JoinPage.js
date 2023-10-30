@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import Header from "../background/Header";
-import { Container, Input, PasswordInput } from "../login/LoginPage";
+import { Link } from "react-router-dom";
+import { Btn, Container, Input, PasswordInput } from "../login/LoginPage";
 
 // styled-componets
 
@@ -78,67 +79,59 @@ function JoinPage() {
     }
   };
 
-  const handlePasswordConfirmChange = (e) => {
+  const handleCheckPw = (e) => {
     const newPasswordConfirm = e.target.value;
     setPasswordConfirm(newPasswordConfirm);
-  
+
     if (newPasswordConfirm.length === 0) {
       setPasswordConfirmErrorMsg("");
-    }
-    else if (newPasswordConfirm !== password) {
+    } else if (newPasswordConfirm !== password) {
       setPasswordConfirmErrorMsg("비밀번호가 일치하지 않습니다");
     } else {
       setPasswordConfirmErrorMsg("");
     }
   };
 
-  // 현재 비밀번호 보이기 토글
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
 
   return (
     <>
-    <Container>
-      <Header title="회원가입" />
-      <div>
-        <Input type="text" placeholder="성" />
-      </div>
-      <div>
-        <Input type="text" placeholder="이름" />
-      </div>
-      <div>
-        <Input
-          type="email"
-          placeholder="이메일"
-          value={email}
-          onChange={handleEmailChange}
-        />
-        <div style={errorMsgStyle}>{emailErrorMsg}</div>
-      </div>
-      <PasswordInput
-        type={showPassword ? "text" : "password"}
-        placeholder="비밀번호"
-        value={password}
-        onChange={handlePasswordChange}
-      />
-
-      {/* 입력중인 비밀번호 숨기기&보이기 기능
-      <button onClick={togglePasswordVisibility}>
-        {showPassword ? "숨기기" : "보이기"}
-      </button>
-      */}
-      <div style={errorMsgStyle}>{passwordErrorMsg}</div>
-      <div>
+      <Container>
+        <Header title="회원가입" />
+        <div>
+          <Input type="text" placeholder="성" />
+        </div>
+        <div>
+          <Input type="text" placeholder="이름" />
+        </div>
+        <div>
+          <Input
+            type="email"
+            placeholder="이메일"
+            value={email}
+            onChange={handleEmailChange}
+          />
+          <div style={errorMsgStyle}>{emailErrorMsg}</div>
+        </div>
         <PasswordInput
           type={showPassword ? "text" : "password"}
-          placeholder="비밀번호 확인"
-          value={passwordConfirm}
-          onChange={handlePasswordConfirmChange}
+          placeholder="비밀번호"
+          value={password}
+          onChange={handlePasswordChange}
         />
-        <div style={errorMsgStyle}>{passwordConfirmErrorMsg}</div>
-      </div>
-      <LoginBtn>다음</LoginBtn>
+
+        <div style={errorMsgStyle}>{passwordErrorMsg}</div>
+        <div>
+          <PasswordInput
+            type={showPassword ? "text" : "password"}
+            placeholder="비밀번호 확인"
+            value={passwordConfirm}
+            onChange={handleCheckPw}
+          />
+          <div style={errorMsgStyle}>{passwordConfirmErrorMsg}</div>
+        </div>
+        <div>
+          <Btn>다음</Btn>
+        </div>
       </Container>
     </>
   );
