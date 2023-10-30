@@ -1,15 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import Header from "../background/Header";
-import { Container, Input } from "../login/LoginPage";
+import { Container, Input, PasswordInput } from "../login/LoginPage";
 
 // styled-componets
-
-// 비밀번호 input - 필드 (아이디 input 필드 상속)
-const PasswordInput = styled(Input)`
-  font: small-caption;
-  font-size: 16px;
-`;
 
 // 로그인 버튼
 const LoginBtn = styled.button`
