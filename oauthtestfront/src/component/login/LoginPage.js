@@ -7,10 +7,11 @@ import KakaoLoginButton from "./KakaoLoginButton";
 
 // styled-componets
 // 아이디 input - 필드
-const Input = styled.input`
+export const Input = styled.input`
+  font-family: 'NIXGONM-Vb';
   border: none;
   border-radius: 0px;
-  border-bottom: 2px solid black;
+  border-bottom: 1px solid grey;
   margin: 5px;
   padding: 10px;
   width: 300px;
@@ -23,7 +24,8 @@ const Input = styled.input`
 `;
 
 // 비밀번호 input - 필드 (아이디 input 필드 상속)
-const PasswordInput = styled(Input)`
+export const PasswordInput = styled(Input)`
+  font-family: 'NIXGONM-Vb';
   font: small-caption;
   font-size: 16px;
 `;
@@ -52,6 +54,44 @@ const Button = styled.button`
   margin: 5px;
 `;
 
+// 컨테이너
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 540px; /* 너비 제한 추가 */
+  margin: 0 auto; /* 가운데 정렬을 위해 추가 */
+  text-align: center; /* 텍스트를 중앙으로 정렬합니다. */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+  transition: box-shadow 0.3s ease; /* 효과를 부드럽게 적용하기 위한 트랜지션 추가 */
+  height: 100vh; /* 뷰포트 높이에 딱 맞게 높이 설정 */
+  overflow-y: auto; /* 스크롤이 필요한 경우 스크롤 표시 */
+`;
+
+
+// line - SNS로 로그인하기
+const Line = styled.div`
+  display: flex;
+  flex-basis: 100%;
+  align-items: center;
+  color: rgba(0, 0, 0, 0.35);
+  font-size: 14px;
+  margin: 0px 0px;
+
+  &::before,
+  &::after {
+    content: "";
+    flex-grow: 1;
+    margin: 0px 16px;
+    background: rgba(0, 0, 0, 0.35);
+    height: 1px;
+    font-size: 0px;
+    line-height: 0px;
+    max-width: 520px; /* 선의 최대 너비를 설정 (컨테이너 너비 - 간격 * 2) */
+  }
+`;
+
+
 function LoginForm() {
   <Routes>
     <Route path="/join" element={<JoinPage />} />
@@ -59,23 +99,26 @@ function LoginForm() {
 
   return (
     <>
-      <Header title="로그인" />
-      <div>
-        <Input type="id" placeholder="이메일" />
-      </div>
-      <div>
-        <PasswordInput type="password" placeholder="비밀번호" />
-      </div>
-      <LoginBtn>로그인</LoginBtn>
-      <div>
-        <Link to="/join">
-          <Button>회원가입</Button>
-        </Link>
-      </div>
-      <div>
-        <Button>비밀번호 초기화</Button>
-      </div>
-      <KakaoLoginButton />
+      <Container>
+        <Header title="로그인" />
+        <div>
+          <Input type="id" placeholder="이메일" />
+        </div>
+        <div>
+          <PasswordInput type="password" placeholder="비밀번호" />
+        </div>
+        <LoginBtn>로그인</LoginBtn>
+        <div>
+          <Link to="/join">
+            <Button>회원가입</Button>
+          </Link>
+        </div>
+        <div>
+          <Button>비밀번호 초기화</Button>
+        </div>
+        <Line>SNS로 로그인하기</Line>
+        <KakaoLoginButton />
+      </Container>
     </>
   );
 }
