@@ -77,7 +77,7 @@ const Line = styled.div`
   align-items: center;
   color: rgba(0, 0, 0, 0.35);
   font-size: 14px;
-  margin: 0px 0px;
+  margin-top: 10px;
 
   &::before,
   &::after {
