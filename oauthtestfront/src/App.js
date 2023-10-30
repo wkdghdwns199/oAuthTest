@@ -4,6 +4,7 @@ function App() {
   return (
     <div>
       <header>
+        <div>test</div>
         <img src={process.env.PUBLIC_URL + '/logo.png'} alt="logo" />
         <h1>WAP Toonder</h1>
       </header>
