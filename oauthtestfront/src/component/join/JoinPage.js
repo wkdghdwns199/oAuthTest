@@ -7,7 +7,6 @@ import { hashtagOptions } from "./hashtagOptions";
 import styles from "./JoinPage.module.css";
 
 // styled-componets
-
 // 로그인 버튼
 const LoginBtn = styled.button`
   font-family: "NIXGONM-Vb";
