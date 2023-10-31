@@ -5,13 +5,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { Container, Input, PasswordInput, Btn } from "../login/LoginPage";
 import { hashtagOptions } from "./hashtagOptions";
 import styles from "./JoinPage.module.css";
-import supabase from "../main/supabase";
+import supabase from "../supabase";
+import axios from "axios";
 
 // styled-componets
 
 function JoinPage() {
   useEffect(() => {
-    document.title = '툰더 회원가입';
+    document.title = "툰더 회원가입";
   }, []);
 
   const [firstName, setFirstName] = useState(""); //이름 값
@@ -70,8 +71,6 @@ function JoinPage() {
       );
     }
   };
-
-
 
   // 이메일, 비밀번호 입력시 에러메시지 style
   const errorMsgStyle = {
@@ -156,70 +155,71 @@ function JoinPage() {
   return (
     <>
       <Container>
-        <Header title="회원가입" />
-        <div>
-          <Input
-            type="text"
-            onChange={handleLastName}
-            id="lastName"
-            placeholder="성"
-          />
-        </div>
-        <div>
-          <Input
-            type="text"
-            onChange={handleFirstName}
-            id="firstName"
-            placeholder="이름"
-          />
-        </div>
-        <div>
-          <Input
-            type="email"
-            placeholder="이메일"
-            value={email}
-            onChange={handleEmailChange}
-          />
-          <div style={errorMsgStyle}>{emailErrorMsg}</div>
-        </div>
-        <PasswordInput
-          type={showPassword ? "text" : "password"}
-          placeholder="비밀번호"
-          value={pw}
-          onChange={handlePasswordChange}
-        />
-
-        <div style={errorMsgStyle}>{passwordErrorMsg}</div>
-        <div>
-          <PasswordInput
-            type={showPassword ? "text" : "password"}
-            placeholder="비밀번호 확인"
-            value={passwordConfirm}
-            onChange={handleCheckPw}
-          />
-          <div style={errorMsgStyle}>{passwordConfirmErrorMsg}</div>
-        </div>
-        <div style={{ marginTop: "30px", marginBottom: "20px" }}>
-          좋아하는 만화 장르를 1개 이상 선택하세요
-        </div>
-        
-        {/* 체크박스 컨테이너 */}
-        <div className={styles.CheckboxContainer}>
-          {hashtagOptions.map((hashtag) => (
-            <label className={styles.CheckboxLabel}>
-              <input
-                type="checkbox"
-                className={styles.CheckboxInput}
-                value={hashtag}
-                onChange={handleCheckboxChange}
+        {loading ? (
+          <Header title="메롱" />
+        ) : (
+          <form onSubmit={handleSubmit}>
+              <Input
+                type="text"
+                onChange={handleLastName}
+                id="lastName"
+                placeholder="성"
               />
-              {hashtag}
-            </label>
-          ))}
-        </div>
-        <div>
-          <Btn style={{ marginBottom: '50px' }}>다음</Btn>
-        </div>
+              <Input
+                type="text"
+                onChange={handleFirstName}
+                id="firstName"
+                placeholder="메롱"
+              />
+            <div>
+              <Input
+                type="email"
+                placeholder="이메일"
+                value={email}
+                onChange={handleEmailChange}
+              />
+              <div style={errorMsgStyle}>{emailErrorMsg}</div>
+            </div>
+            <PasswordInput
+              type={showPassword ? "text" : "password"}
+              placeholder="비밀번호"
+              value={pw}
+              onChange={handlePasswordChange}
+            />
+
+            <div style={errorMsgStyle}>{passwordErrorMsg}</div>
+            <div>
+              <PasswordInput
+                type={showPassword ? "text" : "password"}
+                placeholder="비밀번호 확인"
+                value={passwordConfirm}
+                onChange={handleCheckPw}
+              />
+              <div style={errorMsgStyle}>{passwordConfirmErrorMsg}</div>
+            </div>
+            <div style={{ marginTop: "30px", marginBottom: "20px" }}>
+              좋아하는 만화 장르를 1개 이상 선택하세요
+            </div>
+
+            {/* 체크박스 컨테이너 */}
+            <div className={styles.CheckboxContainer}>
+              {hashtagOptions.map((hashtag) => (
+                <label className={styles.CheckboxLabel}>
+                  <input
+                    type="checkbox"
+                    className={styles.CheckboxInput}
+                    value={hashtag}
+                    onChange={handleCheckboxChange}
+                  />
+                  {hashtag}
+                </label>
+              ))}
+            </div>
+            <div>
+              <Btn style={{ marginBottom: "50px" }} type="submit">다음</Btn>
+            </div>
+          </form>
+        )}
       </Container>
     </>
   );
