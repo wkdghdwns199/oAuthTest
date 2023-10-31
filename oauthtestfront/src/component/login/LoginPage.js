@@ -31,7 +31,7 @@ export const Input = styled.input`
   border-bottom: 1px solid grey;
   margin: 5px;
   padding: 10px;
-  width: 300px;
+  width: 340px;
   font-size: 16px;
   outline: none;
 
@@ -57,7 +57,7 @@ export const Btn = styled.button`
   font-size: 16px;
   cursor: pointer;
   border-radius: 10px;
-  padding: 14px 100px;
+  padding: 14px 120px;
   margin: 20px;
   display: block;
   position: relative; /* position 속성 추가 */
@@ -86,7 +86,7 @@ const Line = styled.div`
   align-items: center;
   color: #efefef;
   font-size: 14px;
-  margin-top: 10px;
+  margin-top: 20px;
 
   &::before,
   &::after {
