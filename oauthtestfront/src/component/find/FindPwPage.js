@@ -1,12 +1,8 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import Header from "../background/Header";
-import { Container, Input, PasswordInput, Btn } from "../login/LoginPage";
+import { Container, Input, Btn } from "../login/LoginPage";
 
-// styled-componets
-
-
-function FindPw() {
+function FindPwPage() {
   return (
     <>
       <Container>
@@ -22,4 +18,4 @@ function FindPw() {
   );
 }
 
-export default FindPw;
+export default FindPwPage;
