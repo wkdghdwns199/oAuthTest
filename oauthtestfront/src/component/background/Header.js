@@ -13,7 +13,7 @@ function Header(props) {
         width="80px"
         height="auto"
       />
-      <h2>{props.title}</h2>
+      <h2 style={{ color:'#efefef', letterSpacing: '2px'}}>{props.title}</h2>
     </Head>
   );
 }

@@ -170,15 +170,13 @@ function JoinPage() {
           id="firstName"
           placeholder="이름"
         />
-        <div>
-          <Input
-            type="email"
-            placeholder="이메일"
-            value={email}
-            onChange={handleEmail}
-          />
-          <div className={styles.errorMsgStyle}>{emailErrorMsg}</div>
-        </div>
+        <Input
+          type="email"
+          placeholder="이메일"
+          value={email}
+          onChange={handleEmail}
+        />
+        <div className={styles.errorMsgStyle}>{emailErrorMsg}</div>
         <PwInput
           type="password"
           placeholder="비밀번호"
@@ -186,17 +184,17 @@ function JoinPage() {
           onChange={handlePw}
         />
         <div className={styles.errorMsgStyle}>{pwErrorMsg}</div>
-        <div>
-          <PwInput
-            type="password"
-            placeholder="비밀번호 확인"
-            value={pwc}
-            onChange={handleCheckPw}
-          />
-          <div className={styles.errorMsgStyle}>{pwCheckErrorMsg}</div>
-        </div>
-        <div style={{ marginTop: "30px", marginBottom: "20px" }}>
-          좋아하는 만화 장르를 1개 이상 선택하세요
+        <PwInput
+          type="password"
+          placeholder="비밀번호 확인"
+          value={pwc}
+          onChange={handleCheckPw}
+        />
+        <div className={styles.errorMsgStyle}>{pwCheckErrorMsg}</div>
+        <div
+          style={{ color: "#efefef", marginTop: "30px", marginBottom: "20px" }}
+        >
+          좋아하는 웹툰 장르를 1개 이상 선택하세요
         </div>
 
         {/* 체크박스 컨테이너 */}

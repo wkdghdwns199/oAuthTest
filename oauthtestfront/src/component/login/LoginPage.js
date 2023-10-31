@@ -23,6 +23,7 @@ export const Container = styled.div`
 
 // 아이디 input - 필드
 export const Input = styled.input`
+  background-color: #414141;
   font-family: "NIXGONM-Vb";
   border: none;
   border-radius: 0px;
@@ -35,6 +36,7 @@ export const Input = styled.input`
 
   &::placeholder {
     font-family: "NIXGONM-Vb"; /* placeholder에 폰트 스타일 적용 */
+    color: #bfbfbf;
   }
 `;
 
@@ -48,7 +50,7 @@ export const PwInput = styled(Input)`
 // 로그인 버튼
 export const Btn = styled.button`
   font-family: "NIXGONM-Vb";
-  background-color: black;
+  background-color: #6E6E6E;
   border: none;
   color: white;
   font-size: 16px;
@@ -70,7 +72,7 @@ export const BtnText = styled.button`
   cursor: pointer;
   font-family: "NIXGONM-Vb";
   font-size: 16px;
-  color: black;
+  color: #efefef;
   background: none;
   border: none;
   margin: 5px;
@@ -81,7 +83,7 @@ const Line = styled.div`
   display: flex;
   flex-basis: 100%;
   align-items: center;
-  color: rgba(0, 0, 0, 0.35);
+  color: #efefef;
   font-size: 14px;
   margin-top: 10px;
 
@@ -107,23 +109,15 @@ function LoginForm() {
     <>
       <Container>
         <Header title="로그인" />
-        <div>
           <Input type="id" placeholder="이메일" />
-        </div>
-        <div>
           <PwInput type="password" placeholder="비밀번호" />
-        </div>
         <Btn>로그인</Btn>
-        <div>
           <Link to="/join">
             <BtnText>회원가입</BtnText>
           </Link>
-        </div>
-        <div>
           <Link to="/findpw">
             <BtnText>비밀번호 초기화</BtnText>
           </Link>
-        </div>
         <Line>SNS로 로그인하기</Line>
         <KakaoLoginButton />
       </Container>

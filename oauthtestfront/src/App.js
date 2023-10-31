@@ -12,9 +12,9 @@ function App() {
   return (
     <div className="App">
       <button>
-      <Link to="/login">로그인화면</Link></button>
+      <Link to="/login">로그인</Link></button>
       <button>
-      <Link to="/join">회원가입화면</Link></button>
+      <Link to="/join">회원가입</Link></button>
       <button>
       <Link to="/findpw">비밀번호 초기화</Link></button>
       <Routes>

@@ -6,6 +6,7 @@
     height: 160px;
     overflow-y: auto;
     border: 1px solid #ccc;
+    margin: 5px;
     padding: 10px;
     width: 350px;
     display: flex;
@@ -14,6 +15,7 @@
     border-radius: 10px;
     background-color: #bfbfbf;
     color: black;
+    
     /* 스크롤 스타일 적용 */
     /* 스크롤바 가로 사이즈 */
     ::-webkit-scrollbar {
