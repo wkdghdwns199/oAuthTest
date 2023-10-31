@@ -1,35 +1,12 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Header from "../background/Header";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Btn, Container, Input, PasswordInput } from "../login/LoginPage";
 import { hashtagOptions } from "./hashtagOptions";
 import styles from "./JoinPage.module.css";
 
 // styled-componets
-// 로그인 버튼
-const LoginBtn = styled.button`
-  font-family: "NIXGONM-Vb";
-  background-color: black;
-  border: none;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 10px;
-  padding: 10px 50px;
-  margin: 20px;
-`;
-
-// 회원가입, 비밀번호 초기화 - 버튼
-const Button = styled.button`
-  cursor: pointer;
-  font-family: "NIXGONM-Vb";
-  font-size: 16px;
-  color: black;
-  background: none;
-  border: none;
-  margin: 5px;
-`;
 
 function JoinPage() {
   const [email, setEmail] = useState("");
