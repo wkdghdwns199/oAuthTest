@@ -25,6 +25,7 @@ export const Container = styled.div`
 export const Input = styled.input`
   background-color: #414141;
   font-family: "NIXGONM-Vb";
+  color: #efefef;
   border: none;
   border-radius: 0px;
   border-bottom: 1px solid grey;
