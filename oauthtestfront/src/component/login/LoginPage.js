@@ -64,7 +64,7 @@ export const Btn = styled.button`
   }
 `;
 
-// 회원가입, 비밀번호 초기화 - 버튼
+// 텍스트로 된 버튼
 export const BtnText = styled.button`
   cursor: pointer;
   font-family: "NIXGONM-Vb";
