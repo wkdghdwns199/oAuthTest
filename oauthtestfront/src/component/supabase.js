@@ -1,5 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
-// import { Auth } from '@supabase/auth-ui-react';
+import { Auth } from '@supabase/auth-ui-react';
 
 const supabaseUrl = process.env.REACT_APP_SUPABASE_URL;
 const supabaseKey = process.env.REACT_APP_SUPABASE_KEY;
