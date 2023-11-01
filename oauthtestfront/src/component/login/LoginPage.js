@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Header from "../background/Header";
-import { Link, Route, Routes, useNavigate } from "react-router-dom";
-import JoinPage from "../join/JoinPage";
+import { Link, useNavigate } from "react-router-dom";
 import KakaoLoginButton from "./KakaoLoginButton";
 import supabase from "../supabase";
 
@@ -24,7 +23,7 @@ export const Container = styled.div`
 
 // 아이디 input - 필드
 export const Input = styled.input`
-  background-color: #424242;
+  background-color: #414141;
   font-family: "NIXGONM-Vb";
   color: #efefef;
   border: none;
@@ -104,15 +103,15 @@ const Line = styled.div`
 
 const ErrorMsg = styled.div`
   font-size: 12px;
-  color: #FF5722;
+  color: #ff5722;
 `;
 
 function LoginForm() {
-  const [email, setEmail] = useState(""); //이메일 값
-  const [pw, setPw] = useState(""); //비밀번호 값
-  const [isEmailConfirm, setEmailConfirm] = useState(false); //이메일 유효성
-  const [isPwConfirm, setPwConfirm] = useState(false); //비밀번호 유효성
-  const [notAllow, setNotAllow] = useState(true); //로그인 (submit)버튼 활성화 여부
+  const [email, setEmail] = useState(""); // 이메일 값
+  const [pw, setPw] = useState(""); // 비밀번호 값
+  const [isEmailConfirm, setEmailConfirm] = useState(false); // 이메일 유효성 여부
+  const [isPwConfirm, setPwConfirm] = useState(false); // 비밀번호 유효성 여부
+  const [notAllow, setNotAllow] = useState(true); // 로그인 버튼 활성화 여부
   const navigate = useNavigate();
   // const [loading, setLoading] = useState(false);
   const [loginErrorMsg, setLoginErrorMsg] = useState(""); // 로그인 에러 메시지
@@ -133,6 +132,27 @@ function LoginForm() {
     checkLoggedIn();
   }, []);
 
+  useEffect(() => {
+    // 이메일과 비밀번호가 모두 입력되었을 때 로그인 버튼 활성화
+    if (isEmailConfirm && isPwConfirm) setNotAllow(false);
+    else setNotAllow(true);
+    return;
+  }, [isEmailConfirm, isPwConfirm]);
+
+  const handleEmail = (e) => {
+    const newEmail = e.target.value;
+    setEmail(newEmail);
+
+    setEmailConfirm(true);
+  };
+
+  const handlePW = (e) => {
+    const newPw = e.target.value;
+    setPw(newPw);
+
+    setPwConfirm(true);
+  };
+
   const onClickConfirm = async (e) => {
     e.preventDefault();
     // setLoading(true);
@@ -149,10 +169,9 @@ function LoginForm() {
       } else if (data) {
         alert("로그인 되었습니다");
         sessionStorage.setItem("loggedUserEmail", email); // 로그인 하면 sessionStorage에 email이 저장됨
-        navigate("/"); // 로그인 성공 시 대시보드 페이지로 이동
+        navigate("/"); // 로그인 성공 시 메인으로 리다이렉트
       }
     } catch (error) {
-      //setLoginValidErrorMsg("잘못 입력했습니다.");
       alert("로그인 실패");
       console.log(error);
     } finally {
@@ -160,57 +179,31 @@ function LoginForm() {
     }
   };
 
-  useEffect(() => {
-    //이메일 유효성과 비밀번호 유효성이 바꼈을때 둘다 유효한 경우만 login버튼 활성화 해주는 기능
-
-    if (isEmailConfirm && isPwConfirm) setNotAllow(false);
-    else setNotAllow(true);
-    return;
-  }, [isEmailConfirm, isPwConfirm]);
-
-  const handleEmail = (e) => {
-    //이메일 값을 value에 state
-    const newEmail = e.target.value;
-    setEmail(newEmail);
-
-    setEmailConfirm(true);
-  };
-
-  const handlePW = (e) => {
-    const newPw = e.target.value;
-    setPw(newPw);
-    setPwConfirm(true);
-  };
-
-  <Routes>
-    <Route path="/join" element={<JoinPage />} />
-  </Routes>;
-
   return (
     <>
       <Container>
         <Header title="로그인" />
         <form>
-        <Input
-          type="id"
-          value={email}
-          onChange={handleEmail}
-          placeholder="이메일"
-        />
+          <Input
+            type="id"
+            value={email}
+            onChange={handleEmail}
+            placeholder="이메일"
+          />
 
-        <PwInput
-          type="password"
-          value={pw}
-          onChange={handlePW}
-          placeholder="비밀번호"
-        />
-        <ErrorMsg>{loginErrorMsg}</ErrorMsg>
-        
+          <PwInput
+            type="password"
+            value={pw}
+            onChange={handlePW}
+            placeholder="비밀번호"
+          />
+          <ErrorMsg>{loginErrorMsg}</ErrorMsg>
+
           <Btn onClick={onClickConfirm} disabled={notAllow} type="submit">
             로그인
           </Btn>
         </form>
-        <Link to="/join">
+        <Link to="/join/step1">
           <BtnText>회원가입</BtnText>
         </Link>
         <Link to="/findpw">
