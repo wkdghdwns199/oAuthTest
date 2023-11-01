@@ -1,8 +1,9 @@
 import React from "react";
 import "./App.css";
 import LoginPage from "./component/login/LoginPage";
-import JoinPage from "./component/join/JoinPage";
 import FindPwPage from "./component/find/FindPwPage";
+import JoinPageStep1 from "./component/join/JoinPageStep1";
+import JoinPageStep2 from "./component/join/JoinPageStep2";
 import { Routes, Route, Link } from "react-router-dom";
 import LoginHandler from "./component/login/LoginHandler";
 import supabase from "./component/supabase";
@@ -32,14 +33,15 @@ function App() {
         </Link>
       </button>
       <button>
-        <Link to="/join">회원가입</Link>
+        <Link to="/join/step1">회원가입</Link>
       </button>
       <button>
         <Link to="/findpw">비밀번호 초기화</Link>
       </button>
       <Routes>
         <Route path="/login" element={<LoginPage />}></Route>
-        <Route path="/join" element={<JoinPage />}></Route>
+        <Route path="/join/step1" element={<JoinPageStep1 />} />
+        <Route path="/join/step2" element={<JoinPageStep2 />} />
         <Route path="/findpw" element={<FindPwPage />}></Route>
         <Route path="/user/kakao/callback" element={<LoginHandler />}></Route>
       </Routes>
