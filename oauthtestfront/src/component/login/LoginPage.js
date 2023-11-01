@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Header from "../background/Header";
-import { Link, Route, Routes } from "react-router-dom";
+import { Link, Route, Routes, useNavigate } from "react-router-dom";
 import JoinPage from "../join/JoinPage";
 import KakaoLoginButton from "./KakaoLoginButton";
+import supabase from "../supabase";
 
 // styled-componets
 // 컨테이너
@@ -23,7 +24,7 @@ export const Container = styled.div`
 
 // 아이디 input - 필드
 export const Input = styled.input`
-  background-color: #414141;
+  background-color: #121212;
   font-family: "NIXGONM-Vb";
   color: #efefef;
   border: none;
@@ -31,7 +32,7 @@ export const Input = styled.input`
   border-bottom: 1px solid grey;
   margin: 5px;
   padding: 10px;
-  width: 340px;
+  width: 300px;
   font-size: 16px;
   outline: none;
 
@@ -51,13 +52,13 @@ export const PwInput = styled(Input)`
 // 로그인 버튼
 export const Btn = styled.button`
   font-family: "NIXGONM-Vb";
-  background-color: #6E6E6E;
+  background-color: #6e6e6e;
   border: none;
   color: white;
   font-size: 16px;
   cursor: pointer;
   border-radius: 10px;
-  padding: 14px 120px;
+  padding: 14px 100px;
   margin: 20px;
   display: block;
   position: relative; /* position 속성 추가 */
@@ -101,7 +102,86 @@ const Line = styled.div`
   }
 `;
 
+const ErrorMsg = styled.div`
+  font-size: 12px;
+  color: #df0101;
+`;
+
 function LoginForm() {
+  const [email, setEmail] = useState(""); //이메일 값
+  const [pw, setPw] = useState(""); //비밀번호 값
+  const [isEmailConfirm, setEmailConfirm] = useState(false); //이메일 유효성
+  const [isPwConfirm, setPwConfirm] = useState(false); //비밀번호 유효성
+  const [notAllow, setNotAllow] = useState(true); //로그인 (submit)버튼 활성화 여부
+  const navigate = useNavigate();
+  // const [loading, setLoading] = useState(false);
+  const [loginErrorMsg, setLoginErrorMsg] = useState(""); // 로그인 에러 메시지
+
+  useEffect(() => {
+    // 이미 로그인된 상태인지 확인
+    const checkLoggedIn = async () => {
+      const { data, error } = await supabase.auth.getSession();
+      const session = data.session;
+
+      if (session !== null) {
+        // 이미 로그인된 상태라면 로그아웃하고 메인 페이지로 이동
+        alert("이미 로그인되어 있습니다.");
+        navigate("/"); // 메인 페이지로 이동
+      }
+    };
+
+    checkLoggedIn();
+  }, []);
+
+  const onClickConfirm = async (e) => {
+    e.preventDefault();
+    // setLoading(true);
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: email,
+        password: pw,
+      });
+
+      if (error) {
+        setLoginErrorMsg("잘못 입력했습니다.");
+        // alert("로그인 실패");
+        console.log(error);
+      } else if (data) {
+        alert("로그인 되었습니다");
+        sessionStorage.setItem("loggedUserEmail", email); // 로그인 하면 sessionStorage에 email이 저장됨
+        navigate("/"); // 로그인 성공 시 대시보드 페이지로 이동
+      }
+    } catch (error) {
+      //setLoginValidErrorMsg("잘못 입력했습니다.");
+      alert("로그인 실패");
+      console.log(error);
+    } finally {
+      // setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    //이메일 유효성과 비밀번호 유효성이 바꼈을때 둘다 유효한 경우만 login버튼 활성화 해주는 기능
+
+    if (isEmailConfirm && isPwConfirm) setNotAllow(false);
+    else setNotAllow(true);
+    return;
+  }, [isEmailConfirm, isPwConfirm]);
+
+  const handleEmail = (e) => {
+    //이메일 값을 value에 state
+    const newEmail = e.target.value;
+    setEmail(newEmail);
+
+    setEmailConfirm(true);
+  };
+
+  const handlePW = (e) => {
+    const newPw = e.target.value;
+    setPw(newPw);
+    setPwConfirm(true);
+  };
+
   <Routes>
     <Route path="/join" element={<JoinPage />} />
   </Routes>;
@@ -110,15 +190,31 @@ function LoginForm() {
     <>
       <Container>
         <Header title="로그인" />
-          <Input type="id" placeholder="이메일" />
-          <PwInput type="password" placeholder="비밀번호" />
-        <Btn>로그인</Btn>
-          <Link to="/join">
-            <BtnText>회원가입</BtnText>
-          </Link>
-          <Link to="/findpw">
-            <BtnText>비밀번호 초기화</BtnText>
-          </Link>
+        <Input
+          type="id"
+          value={email}
+          onChange={handleEmail}
+          placeholder="이메일"
+        />
+
+        <PwInput
+          type="password"
+          value={pw}
+          onChange={handlePW}
+          placeholder="비밀번호"
+        />
+        <ErrorMsg>{loginErrorMsg}</ErrorMsg>
+        <form>
+          <Btn onClick={onClickConfirm} disabled={notAllow} type="submit">
+            로그인
+          </Btn>
+        </form>
+        <Link to="/join">
+          <BtnText>회원가입</BtnText>
+        </Link>
+        <Link to="/findpw">
+          <BtnText>비밀번호 초기화</BtnText>
+        </Link>
         <Line>SNS로 로그인하기</Line>
         <KakaoLoginButton />
       </Container>
