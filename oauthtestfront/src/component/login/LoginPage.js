@@ -24,7 +24,7 @@ export const Container = styled.div`
 
 // 아이디 input - 필드
 export const Input = styled.input`
-  background-color: #121212;
+  background-color: #424242;
   font-family: "NIXGONM-Vb";
   color: #efefef;
   border: none;
@@ -104,7 +104,7 @@ const Line = styled.div`
 
 const ErrorMsg = styled.div`
   font-size: 12px;
-  color: #cf6679;
+  color: #FF5722;
 `;
 
 function LoginForm() {
