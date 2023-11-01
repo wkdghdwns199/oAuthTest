@@ -60,7 +60,7 @@ export const Btn = styled.button`
   border-radius: 10px;
   padding: 14px 100px;
   margin: 20px;
-  display: block;
+  display: center;
   position: relative; /* position 속성 추가 */
   transition: box-shadow 0.3s ease; /* 효과를 부드럽게 적용하기 위한 트랜지션 추가 */
 
@@ -104,7 +104,7 @@ const Line = styled.div`
 
 const ErrorMsg = styled.div`
   font-size: 12px;
-  color: #df0101;
+  color: #cf6679;
 `;
 
 function LoginForm() {
@@ -143,7 +143,7 @@ function LoginForm() {
       });
 
       if (error) {
-        setLoginErrorMsg("잘못 입력했습니다.");
+        setLoginErrorMsg("이메일 또는 비밀번호를 정확하게 입력해주세요");
         // alert("로그인 실패");
         console.log(error);
       } else if (data) {
@@ -190,6 +190,7 @@ function LoginForm() {
     <>
       <Container>
         <Header title="로그인" />
+        <form>
         <Input
           type="id"
           value={email}
@@ -204,7 +205,7 @@ function LoginForm() {
           placeholder="비밀번호"
         />
         <ErrorMsg>{loginErrorMsg}</ErrorMsg>
-        <form>
+        
           <Btn onClick={onClickConfirm} disabled={notAllow} type="submit">
             로그인
           </Btn>
