@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Header from "../background/Header";
 import { useNavigate } from "react-router-dom";
-import { Container, Input, PwInput, Btn } from "../login/LoginPage";
+import { Input, PwInput, Btn } from "../login/LoginPage";
 import styles from "./JoinPage.module.css";
 // import { IconName } from "react-icons/fa";
 
@@ -109,7 +109,6 @@ function JoinPageStep1() {
 
   return (
     <>
-      <Container>
         <Header title="회원가입" />
         <form onSubmit={handleSubmit}>
           <Input
@@ -157,7 +156,6 @@ function JoinPageStep1() {
             다음
           </Btn>
         </form>
-      </Container>
     </>
   );
 }

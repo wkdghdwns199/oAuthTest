@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { hashtagOptions } from "./hashtagOptions";
-import { Container, Btn } from "../login/LoginPage";
+import { Btn } from "../login/LoginPage";
 import Header from "../background/Header";
 import styles from "./JoinPage.module.css";
 import axios from "axios";
@@ -67,7 +67,6 @@ function JoinPageStep2() {
 
   return (
     <>
-      <Container>
         <Header title="회원가입"></Header>
         <div style={{ color: "#efefef", marginBottom: "20px" }}>
           좋아하는 웹툰 장르를 1개 이상 선택하세요
@@ -96,7 +95,6 @@ function JoinPageStep2() {
         >
           완료
         </Btn>
-      </Container>
     </>
   );
 }

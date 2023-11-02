@@ -1,5 +1,8 @@
 import React from "react";
 import "./App.css";
+import { Container } from "./component/background/Container";
+import Header from "./component/background/Header";
+import MainPage from "./component/main/MainPage";
 import LoginPage from "./component/login/LoginPage";
 import FindPwPage from "./component/find/FindPwPage";
 import JoinPageStep1 from "./component/join/JoinPageStep1";
@@ -25,6 +28,9 @@ function App() {
   return (
     <div className="App">
       <button>
+        <Link to="/">메인</Link>
+      </button>
+      <button>
         <Link to="/login">로그인</Link>
       </button>
       <button>
@@ -38,13 +44,17 @@ function App() {
       <button>
         <Link to="/findpw">비밀번호 초기화</Link>
       </button>
-      <Routes>
-        <Route path="/login" element={<LoginPage />}></Route>
-        <Route path="/join/step1" element={<JoinPageStep1 />} />
-        <Route path="/join/step2" element={<JoinPageStep2 />} />
-        <Route path="/findpw" element={<FindPwPage />}></Route>
-        <Route path="/user/kakao/callback" element={<LoginHandler />}></Route>
-      </Routes>
+
+      <Container>
+        <Routes>
+          <Route path="/" element={<MainPage />}></Route>
+          <Route path="/login" element={<LoginPage />}></Route>
+          <Route path="/join/step1" element={<JoinPageStep1 />} />
+          <Route path="/join/step2" element={<JoinPageStep2 />} />
+          <Route path="/findpw" element={<FindPwPage />}></Route>
+          <Route path="/user/kakao/callback" element={<LoginHandler />}></Route>
+        </Routes>
+      </Container>
     </div>
   );
 }
