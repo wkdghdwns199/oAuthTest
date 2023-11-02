@@ -1,7 +1,6 @@
 import React from "react";
 import "./App.css";
 import { Container } from "./component/background/Container";
-import Header from "./component/background/Header";
 import MainPage from "./component/main/MainPage";
 import LoginPage from "./component/login/LoginPage";
 import FindPwPage from "./component/find/FindPwPage";
