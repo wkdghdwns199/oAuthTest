@@ -1,6 +1,20 @@
 import React from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import { Head } from "../../styles/background/Head";
+import styled from "styled-components";
+
+const Title = styled.div`
+  font-size: 24px;
+  color: #efefef;
+  letter-spacing: 2px;
+  margin: 10px;
+`;
+
+const Subtitle = styled.div`
+  font-size: 14px;
+  color: #efefef;
+  letter-spacing: "2px";
+`;
 
 function Header(props) {
   return (
@@ -13,7 +27,8 @@ function Header(props) {
           height="auto"
         />
       </Link>
-      <h2 style={{ color: "#efefef", letterSpacing: "2px" }}>{props.title}</h2>
+      <Title>{props.title}</Title>
+      <Subtitle>{props.subtitle}</Subtitle>
     </Head>
   );
 }

@@ -5,22 +5,6 @@ import { Link, useNavigate } from "react-router-dom";
 import KakaoLoginButton from "./KakaoLoginButton";
 import supabase from "../supabase";
 
-// styled-componets
-// 컨테이너
-export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 540px; /* 너비 제한 추가 */
-  margin: 0 auto; /* 가운데 정렬을 위해 추가 */
-  text-align: center; /* 텍스트를 중앙으로 정렬합니다. */
-  align-items: center; /* 수정: 수직 가운데 정렬을 위해 필요 */
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
-  transition: box-shadow 0.3s ease; /* 효과를 부드럽게 적용하기 위한 트랜지션 추가 */
-  overflow-y: auto; /* 스크롤이 필요한 경우 스크롤 표시 */
-  min-height: 100vh; /* 컨테이너의 최소 높이를 뷰포트 높이로 설정 */
-`;
-
 // 아이디 input - 필드
 export const Input = styled.input`
   background-color: #414141;
@@ -48,7 +32,7 @@ export const PwInput = styled(Input)`
   font-size: 16px;
 `;
 
-// 로그인 버튼
+// submit 버튼
 export const Btn = styled.button`
   font-family: "NIXGONM-Vb";
   background-color: #6e6e6e;
@@ -79,7 +63,7 @@ export const BtnText = styled.button`
   margin: 5px;
 `;
 
-// line - SNS로 로그인하기
+// line - SNS로 로그인하기 양 옆 줄
 const Line = styled.div`
   display: flex;
   flex-basis: 100%;
@@ -101,6 +85,7 @@ const Line = styled.div`
   }
 `;
 
+// 에러 메시지
 const ErrorMsg = styled.div`
   font-size: 12px;
   color: #ff5722;
@@ -181,37 +166,35 @@ function LoginForm() {
 
   return (
     <>
-      <Container>
-        <Header title="로그인" />
-        <form>
-          <Input
-            type="id"
-            value={email}
-            onChange={handleEmail}
-            placeholder="이메일"
-          />
+      <Header title="로그인" />
+      <form>
+        <Input
+          type="id"
+          value={email}
+          onChange={handleEmail}
+          placeholder="이메일"
+        />
 
-          <PwInput
-            type="password"
-            value={pw}
-            onChange={handlePW}
-            placeholder="비밀번호"
-          />
-          <ErrorMsg>{loginErrorMsg}</ErrorMsg>
+        <PwInput
+          type="password"
+          value={pw}
+          onChange={handlePW}
+          placeholder="비밀번호"
+        />
+        <ErrorMsg>{loginErrorMsg}</ErrorMsg>
 
-          <Btn onClick={onClickConfirm} disabled={notAllow} type="submit">
-            로그인
-          </Btn>
-        </form>
-        <Link to="/join/step1">
-          <BtnText>회원가입</BtnText>
-        </Link>
-        <Link to="/findpw">
-          <BtnText>비밀번호 초기화</BtnText>
-        </Link>
-        <Line>SNS로 로그인하기</Line>
-        <KakaoLoginButton />
-      </Container>
+        <Btn onClick={onClickConfirm} disabled={notAllow} type="submit">
+          로그인
+        </Btn>
+      </form>
+      <Link to="/join/step1">
+        <BtnText>회원가입</BtnText>
+      </Link>
+      <Link to="/findpw">
+        <BtnText>비밀번호 초기화</BtnText>
+      </Link>
+      <Line>SNS로 로그인하기</Line>
+      <KakaoLoginButton />
     </>
   );
 }
